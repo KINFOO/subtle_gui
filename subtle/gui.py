@@ -33,10 +33,11 @@ class SubtleTreeWidget(QTreeWidget):
 def paths_to_items_list(parent, paths):
     items = []
     for path in paths:
-        path = QUrl(path) if type(path) == QUrl else path
-        item = QTreeWidgetItem(parent, [ path.path() ])
-        item.setData(0, 0, path)
-        item.setText(0, os.path.basename(path.fileName()))
-        item.setToolTip( path.path() )
+        url = QUrl(path) if type(path) == QUrl else path
+        path = url.path()
+        item = QTreeWidgetItem(parent, [ path ])
+        item.setData(0, 0, url)
+        item.setText(0, os.path.basename(path))
+        item.setToolTip(0, path)
         items.append( item )
     return items
