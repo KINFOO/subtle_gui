@@ -37,5 +37,6 @@ def paths_to_items_list(parent, paths):
         item = QTreeWidgetItem(parent, [ path.path() ])
         item.setData(0, 0, path)
         item.setText(0, os.path.basename(path.fileName()))
+        item.setToolTip( path.path() )
         items.append( item )
     return items
