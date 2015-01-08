@@ -1,9 +1,10 @@
+from PyQt5 import QtCore
+from PyQt5.QtCore import QUrl
+from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QMainWindow, QTreeWidget, QTreeWidgetItem, QMenuBar,\
     QAction
-from PyQt5.QtCore import QUrl
 
 import os
-from PyQt5 import QtCore
 
 __all__ = ['SubtleMainWindow',]
 
@@ -18,6 +19,7 @@ class SubtleMainWindow(QMainWindow):
         fileMenu = self._menu.addMenu( '&File' )
         fileMenu.addAction( QAction('&Open', fileMenu) )
         close = QAction('&Quit', fileMenu)
+        close.setShortcut( QKeySequence(QKeySequence.Quit) )
         close.triggered.connect( self._close_action )
         fileMenu.addAction( close )
         self.setMenuBar( self._menu )
