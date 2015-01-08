@@ -52,8 +52,11 @@ class SubtleTreeWidget(QTreeWidget):
 
     def __init__(self, parent, items):
         QTreeWidget.__init__( self )
-        self.setColumnCount( 1 )
-        self.setHeaderHidden( True )
+        self.setColumnCount( 2 )
+        header = QTreeWidgetItem( SubtleTreeWidget.ITEM_ROLE )
+        header.setText(0, 'File')
+        header.setText(1, 'Status')
+        self.setHeaderItem( header )
         self.addTopLevelItems( items )
 
 def paths_to_items_list(parent, paths):
